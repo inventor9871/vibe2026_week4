@@ -505,7 +505,8 @@ async function saveTodayConfig() {
         // 先清空 TodayConfig Sheet
         await gapi.client.sheets.spreadsheets.values.clear({
             spreadsheetId: CONFIG.SPREADSHEET_ID,
-            range: `${SHEETS.TODAY}!A2:A` // 保留標題
+            range: `${SHEETS.TODAY}!A2:A`, // 保留標題
+            resource: {}
         });
 
         if (selected.length > 0) {
@@ -536,7 +537,8 @@ async function clearOrders() {
     try {
         await gapi.client.sheets.spreadsheets.values.clear({
             spreadsheetId: CONFIG.SPREADSHEET_ID,
-            range: `${SHEETS.ORDERS}!A2:F` // 保留標題
+            range: `${SHEETS.ORDERS}!A2:F`, // 保留標題
+            resource: {}
         });
         alert('訂單已清空。');
     } catch (err) {
